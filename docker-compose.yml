@@ -1,0 +1,25 @@
+version: '3'
+services:
+  node-app: 
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    depends_on: 
+      - mongo
+
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=pol
+      - MONGO_INITDB_ROOT_PASSWORD=12qwaszxasqw12
+    volumes:
+      - mongo-db:/data/db # volume to persist db data
+  
+  redis:
+    image: redis
+
+# declare the volume and make it accessible to other services
+volumes: 
+  mongo-db:
