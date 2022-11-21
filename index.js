@@ -1,5 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const redis = require('redis');
+
 const { MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = require('./config/config');
 
 
