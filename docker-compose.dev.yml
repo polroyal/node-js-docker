@@ -1,5 +1,9 @@
 version: '3'
 services:
+  haproxy: 
+    ports:
+      - '3000:80'
+      - '8404:8404'
   node-app:
     build: 
       context: .
@@ -12,6 +16,7 @@ services:
       - NODE_ENV=development
       - MONGO_USER=pol
       - MONGO_PASSWORD=12qwaszxasqw12
+      - SESSION_SECRET=secret
       
     command: npm run dev
 
@@ -19,3 +24,4 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=pol
       - MONGO_INITDB_ROOT_PASSWORD=12qwaszxasqw12
+  
