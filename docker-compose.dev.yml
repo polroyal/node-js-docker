@@ -17,7 +17,7 @@ services:
       - MONGO_USER=pol
       - MONGO_PASSWORD=12qwaszxasqw12
       - SESSION_SECRET=secret
-      
+        
     command: npm run dev
 
   mongo:
