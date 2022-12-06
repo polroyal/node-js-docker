@@ -3,7 +3,7 @@ services:
   haproxy: 
     image: haproxy:2.6
     ports:
-      - '3000:80'
+      - '3000:8000'
       - '8404:8404'
     volumes:
       - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro

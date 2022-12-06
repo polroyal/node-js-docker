@@ -2,7 +2,7 @@ version: '3'
 services:
   haproxy: 
     ports:
-      - '80:80'
+      - '8000:8000'
       - '8404:8404' 
   node-app:
     build:
