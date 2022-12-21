@@ -9,7 +9,7 @@ exports.signUp = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 12)
         const newUser = await User.create({
             username,
-            password: hashPassword,
+            password: hashpassword,
         });
         req.session.user = newUser;
         res.status(201).json({

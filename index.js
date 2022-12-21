@@ -6,7 +6,6 @@ const redis = require('redis');
 const cors = require('cors');
 // Define Redis store
 let RedisStore = require('connect-redis')(session);
-// Define Redis client
 
 const { MONGO_USER, 
         MONGO_PASSWORD, 
@@ -17,6 +16,7 @@ const { MONGO_USER,
         SESSION_SECRET, 
     } = require('./config/config');
 
+// Define Redis client
     let redisClient = redis.createClient({
         host: REDIS_URL, 
         port: REDIS_PORT,
@@ -47,17 +47,17 @@ const connectWithRetry = () => {
 };
  connectWithRetry();
 
-//  app.enable('trust proxy')
-app.use(cors({}));
+ app.enable('trust proxy');
+ app.use(cors({}));
  app.use(session({
     store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     cookie: {
-        secure: false,
-        resave: false,
-        saveUninitialized: false,
-        httpOnly: false,
-        maxAge: 60000,
+        // secure: false,
+        // resave: false,
+        // saveUninitialized: false,
+        // httpOnly: false,
+        maxAge: 60000
     },
  })
  );
@@ -66,9 +66,9 @@ app.use(cors({}));
  app.use(express.json());
 
 
-app.get("/", (req, res) => {
+app.get("api/v1/", (req, res) => {
     res.send("<h2>Hi there Pol, aki wewe </h2>");
-    console.log('Yes it works')
+    console.log('Yes Haproxy')
 });
 
 app.use('/api/v1/posts', postRouter);

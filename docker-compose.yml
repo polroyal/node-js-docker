@@ -3,10 +3,11 @@ services:
   haproxy: 
     image: haproxy:alpine
     ports:
-      - '3000:8000'
+      - '3000:8083'
       - '8404:8404'
     volumes:
-      - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      
   node-app: 
     build: .
     environment:
@@ -20,7 +21,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=pol
       - MONGO_INITDB_ROOT_PASSWORD=12qwaszxasqw12
     volumes:
-      - mongo-db:/data/db # volume to persist db data
+      - mongo-db:/data/db # volume to persist db data  -- named volume
   
   redis:
     image: redis
