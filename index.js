@@ -67,7 +67,7 @@ const connectWithRetry = () => {
 
 
 app.get("api/v1/", (req, res) => {
-    res.send("<h2>Hi there Pol, aki wewe </h2>");
+    res.send("<h2>Hi there Pol, it's Xmas </h2>");
     console.log('Yes Haproxy')
 });
 
